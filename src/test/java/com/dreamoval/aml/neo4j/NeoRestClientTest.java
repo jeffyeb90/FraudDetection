@@ -1,5 +1,6 @@
-package com.dreamoval.aml.neo4j;
+/**package com.dreamoval.aml.neo4j;
 
+import com.dreamoval.aml.model.neo4j.services.NeoRestClient;
 import com.dreamoval.aml.Application;
 import com.dreamoval.aml.model.Response;
 import com.google.gson.Gson;
@@ -32,3 +33,4 @@ public class NeoRestClientTest {
 
     }
 }
+*/

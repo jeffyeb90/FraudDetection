@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+        <action>
+            <actionName>debug</actionName>
+            <packagings>
+                <packaging>war</packaging>
+                <packaging>ear</packaging>
+                <packaging>ejb</packaging>
+            </packagings>
+            <goals>
+                <goal>package</goal>
+            </goals>
+            <properties>
+                <netbeans.deploy.debugmode>true</netbeans.deploy.debugmode>
+                <netbeans.deploy>true</netbeans.deploy>
+                <jpda.listen>maven</jpda.listen>
+                <Env.JAVA_HOME>/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home</Env.JAVA_HOME>
+            </properties>
+        </action>
+    </actions>

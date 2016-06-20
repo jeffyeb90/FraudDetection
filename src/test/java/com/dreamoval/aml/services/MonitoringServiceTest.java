@@ -1,10 +1,10 @@
-package com.dreamoval.aml.services;
+/**package com.dreamoval.aml.services;
 
 import com.dreamoval.aml.Application;
-import com.dreamoval.aml.model.nodes.Account;
-import com.dreamoval.aml.model.nodes.Customer;
-import com.dreamoval.aml.model.nodes.Institution;
-import com.dreamoval.aml.model.nodes.Transaction;
+import com.dreamoval.aml.model.neo4j.nodes.Account;
+import com.dreamoval.aml.model.neo4j.nodes.Customer;
+import com.dreamoval.aml.model.neo4j.nodes.Institution;
+import com.dreamoval.aml.model.neo4j.nodes.Transaction;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -73,4 +73,4 @@ public class MonitoringServiceTest {
 //        System.out.println(result);
 
     }
-}
+}*/

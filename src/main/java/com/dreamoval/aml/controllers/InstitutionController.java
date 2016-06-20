@@ -4,8 +4,8 @@
  */
 package com.dreamoval.aml.controllers;
 
-import com.dreamoval.aml.model.nodes.Institution;
-import com.dreamoval.aml.neo4j.NeoRestClient;
+import com.dreamoval.aml.model.neo4j.nodes.Institution;
+import com.dreamoval.aml.model.neo4j.services.NeoRestClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;

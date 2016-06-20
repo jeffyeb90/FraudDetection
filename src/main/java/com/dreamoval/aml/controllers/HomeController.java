@@ -1,9 +1,9 @@
 package com.dreamoval.aml.controllers;
 
-import com.dreamoval.aml.mongo.domain.DailySummary;
-import com.dreamoval.aml.mongo.domain.ITransaction;
-import com.dreamoval.aml.mongo.services.DailySummaryService;
-import com.dreamoval.aml.mongo.services.ITransactionService;
+import com.dreamoval.aml.model.mongo.domain.DailySummary;
+import com.dreamoval.aml.model.mongo.domain.ITransaction;
+import com.dreamoval.aml.model.mongo.services.DailySummaryService;
+import com.dreamoval.aml.model.mongo.services.ITransactionService;
 import com.dreamoval.aml.util.DailyStat;
 import com.dreamoval.aml.util.MonthlyChart;
 import com.google.gson.JsonElement;

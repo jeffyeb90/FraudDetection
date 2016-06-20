@@ -4,10 +4,10 @@
  */
 package com.dreamoval.aml.controllers;
 
-import com.dreamoval.aml.model.nodes.Account;
-import com.dreamoval.aml.model.nodes.Customer;
-import com.dreamoval.aml.model.nodes.Institution;
-import com.dreamoval.aml.neo4j.NeoRestClient;
+import com.dreamoval.aml.model.neo4j.nodes.Account;
+import com.dreamoval.aml.model.neo4j.nodes.Customer;
+import com.dreamoval.aml.model.neo4j.nodes.Institution;
+import com.dreamoval.aml.model.neo4j.services.NeoRestClient;
 import com.dreamoval.aml.util.JSONResponse;
 import com.google.gson.Gson;
 import javax.servlet.http.HttpServletRequest;

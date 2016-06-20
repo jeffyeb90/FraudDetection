@@ -1,14 +1,14 @@
 package com.dreamoval.aml.services;
 
 import com.dreamoval.aml.model.Response;
-import com.dreamoval.aml.model.nodes.Transaction;
-import com.dreamoval.aml.mongo.domain.DailySummary;
-import com.dreamoval.aml.mongo.domain.ITransaction;
-import com.dreamoval.aml.mongo.domain.Rule;
-import com.dreamoval.aml.mongo.services.DailySummaryService;
-import com.dreamoval.aml.mongo.services.ITransactionService;
-import com.dreamoval.aml.mongo.services.RuleService;
-import com.dreamoval.aml.neo4j.NeoRestClient;
+import com.dreamoval.aml.model.neo4j.nodes.Transaction;
+import com.dreamoval.aml.model.mongo.domain.DailySummary;
+import com.dreamoval.aml.model.mongo.domain.ITransaction;
+import com.dreamoval.aml.model.mongo.domain.Rule;
+import com.dreamoval.aml.model.mongo.services.DailySummaryService;
+import com.dreamoval.aml.model.mongo.services.ITransactionService;
+import com.dreamoval.aml.model.mongo.services.RuleService;
+import com.dreamoval.aml.model.neo4j.services.NeoRestClient;
 import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

@@ -1,7 +1,8 @@
-package com.dreamoval.aml.mongo.services;
+/**package com.dreamoval.aml.mongo.services;
 
 import com.dreamoval.aml.Application;
-import com.dreamoval.aml.mongo.domain.Rule;
+import com.dreamoval.aml.model.mongo.domain.Rule;
+import com.dreamoval.aml.model.mongo.services.RuleService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,4 +25,4 @@ public class RuleServiceTest {
 //        rule.setQuery("match (c:Customer)-[:Owns]->(a:Account {number: <account_no>}) where c.riskScore > <threshold> return c.id;");
 //        ruleService.save(rule);
     }
-}
+}*/

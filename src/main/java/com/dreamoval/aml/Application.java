@@ -17,14 +17,13 @@ import java.util.Arrays;
 public class Application {
 
     public static void main(String[] args) {
-        ApplicationContext ctx = SpringApplication.run(Application.class, args);
+       ApplicationContext ctx = SpringApplication.run(Application.class, args);
+       System.out.println("Application started");
 
-        System.out.println("Application started");
-
-        String[] beanNames = ctx.getBeanDefinitionNames();
+       String[] beanNames = ctx.getBeanDefinitionNames();
         Arrays.sort(beanNames);
         for (String beanName : beanNames) {
-            System.out.println(beanName);
+           System.out.println(beanName);
         }
     }
 }

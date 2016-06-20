@@ -1,7 +1,8 @@
-package com.dreamoval.aml.model.services;
+/**package com.dreamoval.aml.model.services;
 
 import com.dreamoval.aml.Application;
-import com.dreamoval.aml.model.nodes.Customer;
+import com.dreamoval.aml.model.neo4j.nodes.Customer;
+import com.dreamoval.aml.model.neo4j.services.CustomerService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.neo4j.graphdb.Transaction;
@@ -16,11 +17,11 @@ import static org.junit.Assert.*;
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = Application.class)
 public class CustomerServiceTest {
-
-
+  @Autowired
+    CustomerService  cust;
     @Test
     public void testFindAll() throws Exception {
-//        Transaction tx = graphDatabase.beginTx();
+//     Transaction tx = graphDatabase.beginTx();
 //        try{
 //            Iterable<Customer> result = customerService.findAll();
 //
@@ -36,4 +37,4 @@ public class CustomerServiceTest {
 
 
     }
-}
+}*/
