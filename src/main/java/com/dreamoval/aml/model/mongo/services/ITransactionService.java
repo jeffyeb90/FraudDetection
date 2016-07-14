@@ -3,14 +3,14 @@ package com.dreamoval.aml.model.mongo.services;
 import com.dreamoval.aml.model.mongo.domain.ITransaction;
 import com.dreamoval.aml.model.mongo.repositories.ITransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import java.util.List;
+import org.springframework.stereotype.Service;
 
 /**
  * Created by dreamadmin on 10/11/14.
  */
-@Component
+@Service
 public class ITransactionService {
 
     @Autowired

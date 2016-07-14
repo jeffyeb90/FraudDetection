@@ -9,14 +9,21 @@ import org.springframework.data.neo4j.annotation.GraphId;
 import org.springframework.data.neo4j.annotation.NodeEntity;
 import org.springframework.data.neo4j.annotation.RelatedTo;
 
-/**
- * Created by dreamadmin on 10/11/14.
- */
+/**The Class represents the transaction model with respect to its data and relationships
+*Modified by dreamadmin on 20/06/16.
+*@author dreamadmin
+*Transaction  class
+*/
+
+
+/**class is represented as a node */
 @NodeEntity
 public class Transaction {
 
+   /** the id given to the transaction node*/
     @GraphId
     private String id;
+    
     private String narrative;
     private String type;
     private String source;
@@ -24,9 +31,13 @@ public class Transaction {
     private String flag;
     private Double amount;
     private Date date;
+    
+    /** creates a relationship between a source account and a transaction */
     @RelatedTo(type = "Has", direction = Direction.INCOMING)
     private @Fetch
     Account sourceAccount;
+    
+     /** creates a relationship between a destination account and a transaction */
     @RelatedTo(type = "Has", direction = Direction.INCOMING)
     private @Fetch
     Account destinationAccount;

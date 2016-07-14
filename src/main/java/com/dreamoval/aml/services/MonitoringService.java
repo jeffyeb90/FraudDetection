@@ -16,7 +16,7 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 
 import java.util.List;
-
+/**pass transactions and based on rules find details of customers*/
 /**
  * Created by dreamadmin on 10/11/14.
  */
@@ -34,31 +34,43 @@ public class MonitoringService {
 
     @Autowired
     DailySummaryService dailySummary;
-
+    
+    @Autowired
+    RuleClient ruleclient;
     //run query
     public String runQueries(Transaction transaction){
-        ITransaction tx = new ITransaction();
+        
+        /**takes a transaction, set the details and save
+         *find  the rule
+         *for each of the rules,update the transaction as flagged ,replace 'key' objects(customer and account)
+         * with string rep ,  get the rule query and add to map
+         *so for each rule, find the results based on the customer id and account id
+         * get the transaction id based on the results for both source and destination account,tag either accounts and increment risk scoere
+         * 
+         * 
+         */
+        ITransaction tx = new ITransaction(); 
 
         tx.setAmount(transaction.getAmount());
         tx.setDate(transaction.getDate());
         tx.setDestination(transaction.getDestination());
         tx.setSource(transaction.getSource());
         tx.setId(transaction.getId());
-        tx.setDestinationAccount(transaction.getDestinationAccount().getNumber());
-        tx.setSourceAccount(transaction.getSourceAccount().getNumber());
+        tx.setDestinationAccount(transaction.getDestinationAccount().getAccountNumber());
+        tx.setSourceAccount(transaction.getSourceAccount().getAccountNumber());
         tx.setNarrative(transaction.getNarrative());
         tx.setType(transaction.getType());
         tx.setFlag(transaction.getFlag());
 
         transactionService.save(tx);
-
-        //get queries
-        List<Rule> rules = ruleService.findAll();
+        
+       
+        List<Rule> rules = ruleclient.useRules();
 
         //for each query
-        for(Rule rule:rules){
+        for(Rule rule:rules){  
             MultiValueMap<String,String> map = new LinkedMultiValueMap<String, String>();
-            dailySummary.updateSummary("flaggedTransactions",1);
+          
 
             //run for source
             map.add("query",parseQuery(rule.getQuery(), transaction.getSourceAccount().getCustomer().getId(),
@@ -66,11 +78,13 @@ public class MonitoringService {
             Gson gson = new Gson();
             Response result = rest.runQuery(map);
             if(result.getData().size()>0){
+                  dailySummary.updateSummary("flaggedTransactions",1);
                 //get query for for updating customer
                 rest.updateNode(String.valueOf(transaction.getSourceAccount().getId()));
                 //run query
 
                 //send notification
+                
             }
 
             //run for destination
@@ -98,10 +112,10 @@ public class MonitoringService {
 
         return "done";
     }
-
+/** changed  string declaration to object , value of ,gives string rep */
     public String parseQuery(String query,String customer, String accountId){
-        query = query.replaceAll("<cust_id>",String.valueOf(customer));
-        query = query.replaceAll("<account_no>",String.valueOf(accountId));
+        query = query.replaceAll("<cust_id >",customer);
+        query = query.replaceAll("<account_no>",accountId);
         return query;
     }
 

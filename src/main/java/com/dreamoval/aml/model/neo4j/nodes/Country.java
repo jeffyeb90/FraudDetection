@@ -1,7 +1,4 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.dreamoval.aml.model.neo4j.nodes;
 
 import com.dreamoval.aml.model.neo4j.nodes.Account;
@@ -12,17 +9,24 @@ import org.springframework.data.neo4j.annotation.GraphId;
 import org.springframework.data.neo4j.annotation.NodeEntity;
 import org.springframework.data.neo4j.annotation.RelatedTo;
 
-/**
- *
- * @author dreamadmin
- */
+/**The Class represents the country model with respect to its relationships and data
+*Modified by dreamadmin on 20/06/16.
+*@author dreamadmin
+*Country  class
+*/
+
+/**class is represented as a node */
 @NodeEntity
 public class Country {
+    /** the id given to the country node*/
     @GraphId
     private String id;
+    
+    
     private String name;
     private String code;
     
+    /** creates relationship between country and a set of accounts   */
     @RelatedTo(type = "Owns", direction = Direction.OUTGOING)
     private @Fetch
     Set<Account> accounts;

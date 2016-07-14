@@ -4,9 +4,11 @@
  */
 package com.dreamoval.aml.controllers;
 
+import com.dreamoval.aml.Application;
 import com.dreamoval.aml.model.neo4j.nodes.Account;
 import com.dreamoval.aml.model.neo4j.services.NeoRestClient;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.SpringApplication;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -18,8 +20,9 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class AccountController {
-    @Autowired
-    NeoRestClient neo;
+    
+   @Autowired
+  private  NeoRestClient neo;
     
     @RequestMapping(value="/account/all")
     public @ResponseBody Object getAccounts(){
@@ -40,4 +43,6 @@ public class AccountController {
     public @ResponseBody Object getAccountTransactions(String accountNumber){
         return neo.getAccountTransactions(accountNumber);
     }
+    
+   
 }

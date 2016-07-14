@@ -10,14 +10,14 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 /**
  * Created by dreamadmin on 10/11/14.
  */
-//@Configuration
-//@EnableWebMvc
-//@ComponentScan(basePackages = "com.dreamoval.aml.controllers")
+@Configuration
+@EnableWebMvc
+@ComponentScan(basePackages = "com.dreamoval.aml.controllers")
 public class WebConfig{
 
-//    @Override
-//    public void addResourceHandlers(ResourceHandlerRegistry registry){
-//        registry.addResourceHandler("/resources/**")
-//                .addResourceLocations("/resources/");
-//    }
+      
+   public void addResourceHandlers(ResourceHandlerRegistry registry){
+        registry.addResourceHandler("/resources/**")
+                .addResourceLocations("/resources/");
+    }
 }

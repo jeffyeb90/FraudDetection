@@ -10,6 +10,7 @@ import java.io.Serializable;
 /**
  * Created by dreamadmin on 7/24/14.
  */
+
 public interface DailySummaryRepository extends MongoRepository<DailySummary, Serializable> {
 
 }

@@ -15,18 +15,19 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * Created by dreamadmin on 10/10/14.
  */
-@Controller
+@RestController
 public class HomeController {
 
     @Autowired
-    ITransactionService transactionService;
+  private  ITransactionService transactionService;
 
     @Autowired
-    DailySummaryService dailySummaryService;
+   private DailySummaryService dailySummaryService;
 
     @RequestMapping("/")
     public String index(Model model) {

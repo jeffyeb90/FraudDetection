@@ -109,7 +109,7 @@ public class NeoRestClient {
         try {
             RestTemplate rest = new RestTemplate();
             MultiValueMap<String, String> map = new LinkedMultiValueMap<String, String>();
-            String query = String.format("MATCH (c:Customer {id: %d}) CREATE UNIQUE (c)-[:Owns]->(:Account {accountNumber: '%s', balance: 0, dateOpened: %d, status: 'ACTIVE'})", customer.getId(), account.getNumber(), account.getOpened().getTime());
+            String query = String.format("MATCH (c:Customer {id: %d}) CREATE UNIQUE (c)-[:Owns]->(:Account {accountNumber: '%s', balance: 0, dateOpened: %d, status: 'ACTIVE'})", customer.getId(), account.getAccountNumber(), account.getDateOpened().getTime());
             map.add("query", query);
 
             rest.postForEntity(url, map, Account.class);
@@ -177,7 +177,7 @@ public class NeoRestClient {
             map.add("query", query);
             rest.postForEntity(url, map, Transaction.class);
 
-            query = String.format("MATCH (b:Account {accountNumber: '%s'}), (t:Transaction {id: %d}) CREATE UNIQUE (b)-[:Has]->(t)", transaction.getDestination(), transaction.getId());
+            query = String.format("MATCH (b:Account {accountNumber: '%s'}), (t:Transaction {id: %d}) CREATE UNIQUE (b)-[:Has]->(t)", transaction.getDestinationAccount(), transaction.getId());
             map.add("query", query);
             rest.postForEntity(url, map, Account.class);
         } catch (Exception e) {
@@ -208,7 +208,7 @@ public class NeoRestClient {
         try {
             RestTemplate rest = new RestTemplate();
             MultiValueMap<String, String> map = new LinkedMultiValueMap<String, String>();
-            String query = String.format("MATCH (t:Transactoin {id: %d}) return t", transactionId);
+            String query = String.format("MATCH (t:Transaction {id: %d}) return t", transactionId);
             map.add("query", query);
 
             Response result = runQuery(map);

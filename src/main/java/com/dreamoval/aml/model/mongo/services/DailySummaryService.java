@@ -54,6 +54,11 @@ public class DailySummaryService {
         this.dailySummaryRepository.delete(dailySummary);
     }
 
+    /** depending on the time the application is started and ends, a query is executed to update flagged
+  transactions using mongo operations
+  *if the transaction exists, update the date created with the new time
+  * if not insert a transaction and date created
+  */
     public void updateSummary(String field, int count){
         DateTime beginning = new DateTime();
         beginning = beginning.withTimeAtStartOfDay();

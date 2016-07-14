@@ -10,23 +10,34 @@ import org.springframework.data.neo4j.annotation.GraphId;
 import org.springframework.data.neo4j.annotation.NodeEntity;
 import org.springframework.data.neo4j.annotation.RelatedTo;
 
-/**
- *
- * @author dreamadmin
- */
+/**The Class represents the institution model with respect to its relationships and data 
+*Modified by dreamadmin on 20/06/16.
+*@author dreamadmin
+*Institution  class
+*/
+
+
+/**class is represented as a node */
 @NodeEntity
 public class Institution {
+    
+    /** the id given to the institution node*/
     @GraphId
     private String id;
+    
     private String name;
     private String shortName;
     private String country;
     
-    
+    /**creates a relationship between institution and a set of accounts  */
     @RelatedTo(type = "Holds", direction = Direction.OUTGOING)
     public @Fetch
     Set<Account> accounts;
     
+    
+     /**
+     * @return the institution id
+     */ 
     public String getId(){
         return id;
     }

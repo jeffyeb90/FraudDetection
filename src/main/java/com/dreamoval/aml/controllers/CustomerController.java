@@ -29,11 +29,11 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author dreamadmin
  */
-@Controller
+@RestController
 public class CustomerController {
 
     @Autowired
-    NeoRestClient neo;
+   private NeoRestClient neo;
 
     @RequestMapping(value = "/customer/all")
     public @ResponseBody
