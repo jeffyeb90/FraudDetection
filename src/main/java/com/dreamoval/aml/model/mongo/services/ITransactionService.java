@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class ITransactionService {
 
-    @Autowired
+    //@Autowired
     ITransactionRepository repository;
 
     public ITransaction save(ITransaction transaction){

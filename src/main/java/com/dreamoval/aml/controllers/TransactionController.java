@@ -28,10 +28,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class TransactionController {
 
-    @Autowired
+    //@Autowired
     private NeoRestClient neo;
 
-    @Autowired
+    //@Autowired
     private MonitoringService service;
 
     @RequestMapping(value = "/send/transactions", method = RequestMethod.POST, consumes = "application/json")

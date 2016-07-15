@@ -15,7 +15,6 @@ com/dreamoval/aml/config/WebConfig.class
 com/dreamoval/aml/model/mongo/domain/DailySummary.class
 com/dreamoval/aml/model/mongo/services/ITransactionService.class
 com/dreamoval/aml/model/neo4j/nodes/Country.class
-com/dreamoval/aml/config/ApplicationConfig.class
 com/dreamoval/aml/services/RuleClient.class
 com/dreamoval/aml/model/neo4j/nodes/Account.class
 com/dreamoval/aml/model/mongo/domain/Rule.class

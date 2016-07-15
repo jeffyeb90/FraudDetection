@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class InstitutionController {
-    @Autowired
+    //@Autowired
   private  NeoRestClient neo;
     
     @RequestMapping(value="/fi/all")

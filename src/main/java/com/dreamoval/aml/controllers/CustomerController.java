@@ -32,7 +32,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class CustomerController {
 
-    @Autowired
+    //@Autowired
    private NeoRestClient neo;
 
     @RequestMapping(value = "/customer/all")

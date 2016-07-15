@@ -18,10 +18,10 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 public abstract class RuleClient implements List<Rule> {
     
-    @Autowired
+    //@Autowired
     NeoRestClient rest1;
 
-  @Autowired
+  //s@Autowired
     RuleService ruleService1;
 
 

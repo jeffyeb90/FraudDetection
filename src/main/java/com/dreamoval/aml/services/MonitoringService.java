@@ -23,19 +23,19 @@ import java.util.List;
 @Component
 public class MonitoringService {
 
-    @Autowired
+   // @Autowired
     NeoRestClient rest;
 
-    @Autowired
+   // @Autowired
     RuleService ruleService;
 
-    @Autowired
+    //@Autowired
     ITransactionService transactionService;
 
-    @Autowired
+    //@Autowired
     DailySummaryService dailySummary;
     
-    @Autowired
+    //@Autowired
     RuleClient ruleclient;
     //run query
     public String runQueries(Transaction transaction){

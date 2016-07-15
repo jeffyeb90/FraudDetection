@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class AccountController {
     
-   @Autowired
+   //@Autowired
   private  NeoRestClient neo;
     
     @RequestMapping(value="/account/all")

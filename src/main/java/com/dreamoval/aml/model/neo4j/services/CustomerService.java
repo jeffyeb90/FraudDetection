@@ -15,7 +15,7 @@ import org.springframework.util.MultiValueMap;
 
 @Service("customerService")
 public class CustomerService {
-   @Autowired
+   //@Autowired
     CustomerRepository customerRepository;
    
    

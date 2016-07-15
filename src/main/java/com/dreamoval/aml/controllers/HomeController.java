@@ -23,10 +23,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HomeController {
 
-    @Autowired
+   // @Autowired
   private  ITransactionService transactionService;
 
-    @Autowired
+    //@Autowired
    private DailySummaryService dailySummaryService;
 
     @RequestMapping("/")

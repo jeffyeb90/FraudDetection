@@ -18,10 +18,10 @@ import java.util.List;
 @Service
 public class DailySummaryService {
 
-    @Autowired
+    //@Autowired
     private DailySummaryRepository dailySummaryRepository;
 
-    @Autowired
+    //@Autowired
     private MongoTemplate mongoTemplate;
 
     public DailySummary save(DailySummary dailySummary){

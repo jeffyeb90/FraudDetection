@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class RuleService {
 
-    @Autowired
+    //@Autowired
     RuleRepository queryRepository;
 
     public Rule find(String id) {
