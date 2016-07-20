@@ -25,6 +25,11 @@ public class Application {
     
 //private final static org.slf4j.Logger log = LoggerFactory.getLogger(Application.class);
 
+    /**
+     * Main class to list all beans and display application status
+     * @param args
+     */
+    
     public static void main(String[] args) {
         ApplicationContext ctx = SpringApplication.run(Application.class, args);
 
