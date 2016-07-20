@@ -17,7 +17,7 @@ public class WebConfig{
 
     /**
      * method to add configurations for web application
-     * @param registry 
+     * @param registry name of resourceHandlerRegistry for configuration
      */  
    public void addResourceHandlers(ResourceHandlerRegistry registry){
         registry.addResourceHandler("/resources/**")

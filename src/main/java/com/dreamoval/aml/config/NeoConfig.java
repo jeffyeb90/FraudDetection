@@ -31,7 +31,7 @@ public class NeoConfig extends Neo4jConfiguration {
 	}
 /**
  * creates new graph database
- * @return  database in the given location
+ * @return new database in the given location as a String
  */
 	@Bean
 	GraphDatabaseService graphDatabaseService() {
