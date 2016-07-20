@@ -19,16 +19,22 @@ import org.springframework.data.neo4j.config.EnableNeo4jRepositories;
 import org.springframework.data.neo4j.config.Neo4jConfiguration;
 
 
-/**@Configuration
+@Configuration
 @EnableNeo4jRepositories
 public class NeoConfig extends Neo4jConfiguration {
 
+    /**
+     * Method to set base package for neo4j configuration
+     */
 	public  NeoConfig() {
 		setBasePackage("com.dreamoval.aml");
 	}
-
+/**
+ * creates new graph database
+ * @return  database in the given location
+ */
 	@Bean
 	GraphDatabaseService graphDatabaseService() {
 		return new GraphDatabaseFactory().newEmbeddedDatabase("/Users/JeffreyTakyi-Yeboah/Documents/Neo4j/default.graphdb");
 	}
-}*/
+}

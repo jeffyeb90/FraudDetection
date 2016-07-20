@@ -15,7 +15,10 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 @ComponentScan(basePackages = "com.dreamoval.aml.controllers")
 public class WebConfig{
 
-      
+    /**
+     * method to add configurations for web application
+     * @param registry 
+     */  
    public void addResourceHandlers(ResourceHandlerRegistry registry){
         registry.addResourceHandler("/resources/**")
                 .addResourceLocations("/resources/");
