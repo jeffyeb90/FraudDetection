@@ -28,12 +28,20 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class TransactionController {
 
-    //@Autowired
+    @Autowired
     private NeoRestClient neo;
 
-    //@Autowired
+    @Autowired
     private MonitoringService service;
-
+/**
+ *  Method to create a transaction by sending a request using transactions and account details
+ * @param transaction given to represent transaction details needed to create a transaction
+ * @param sourceId given as the transaction source to create a transaction
+ * @param destinationId given as the transaction destination to create a transaction
+ * @param response given to set response type for a request
+ * @param request given to set request type 
+ * @return JSON response relative to the status of the action
+ */
     @RequestMapping(value = "/send/transactions", method = RequestMethod.POST, consumes = "application/json")
     @ResponseBody
     public JSONResponse sendTransactions(
@@ -52,19 +60,32 @@ public class TransactionController {
         jSONResponse.setMessage("Success");
         return jSONResponse;
     }
-
+/**
+ * Method to get all transactions
+ * @return all transactions as an object
+ */
     @RequestMapping(value = "/transaction/all", method = RequestMethod.POST, consumes = "application/json")
     public @ResponseBody
     Object getTransactions() {
         return neo.getTransactions();
     }
 
+    /**
+     * Method to get a transaction specific to the transaction ID
+     * @param transactionId given to get a specific transaction
+     * @return a specific transaction
+     */
     @RequestMapping(value = "/transaction/get", method = RequestMethod.POST, consumes = "application/json")
     public @ResponseBody
     Object fetchTransaction(Long transactionId) {
         return neo.getTransactionById(transactionId);
     }
 
+    /**
+     *Method to create a new transaction given its source and destination
+     * @param transaction given to represent transaction details needed to create new transactions
+     * @return boolean to indicate status of  action
+     */
     @RequestMapping(value = "/transaction/create", method = RequestMethod.GET, consumes = "application/json")
     public @ResponseBody
     boolean createTransaction(@RequestParam("transaction") String transaction) {

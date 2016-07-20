@@ -21,24 +21,44 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class AccountController {
     
-   //@Autowired
+   @Autowired
   private  NeoRestClient neo;
     
+   /**
+    * A method to get all accounts as a web request. 
+    * @return all accounts as object using the neoRestClient
+    */
     @RequestMapping(value="/account/all")
     public @ResponseBody Object getAccounts(){
         return neo.getAccounts();
     }
     
+    /**
+     * method to fetch specific account details using the account number
+     * @param accountNumber provided to get specific account details
+     * @return specific account details using account number
+     */
     @RequestMapping(value="/account/get", method=RequestMethod.POST, consumes="application/json")
     public @ResponseBody Object fetchAccount(String accountNumber){
         return neo.getAccountByNumber(accountNumber);
     }
     
+    /**
+     * Method to create accounts given the customer and account 
+     * @param account given to create account for a customer 
+     * @param customerNo given to create account for a specific customer
+     * @return boolean for the classified result
+     */
     @RequestMapping(value="/account/create", method=RequestMethod.POST, consumes="application/json")
     public boolean createAccount(Account account, String customerNo){
         return neo.addAccount(account.getCustomer(), account);
     }
     
+    /**
+     * Method to get account transactions using the account number
+     * @param accountNumber given to return all transactions specific to an account
+     * @return account transactions as an object 
+     */
     @RequestMapping(value="/account/transactions", method=RequestMethod.POST, consumes="application/json")
     public @ResponseBody Object getAccountTransactions(String accountNumber){
         return neo.getAccountTransactions(accountNumber);

@@ -23,12 +23,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HomeController {
 
-   // @Autowired
+    @Autowired
   private  ITransactionService transactionService;
 
-    //@Autowired
+    @Autowired
    private DailySummaryService dailySummaryService;
 
+    /**
+     *Method to get monthly statistics in relation to daily transactions
+     * @param model given to represent structure that holds statistics
+     * @return string 
+     */
     @RequestMapping("/")
     public String index(Model model) {
 //        List<ITransaction> transactions = transactionService.findAll();
@@ -45,6 +50,12 @@ public class HomeController {
 //
 //    }
 
+    /**
+     * Method to add to a chart and get monthly statistics in relation to daily summaries for specific days
+     * @param dailySummaries given to represent a list of daily summaries that have been stored
+     * @return chart to show statistics
+     */
+    
     public MonthlyChart getMonthStats(List<DailySummary> dailySummaries){
         MonthlyChart chart = new MonthlyChart();
 

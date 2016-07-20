@@ -18,24 +18,43 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class InstitutionController {
-    //@Autowired
+    @Autowired
   private  NeoRestClient neo;
     
+    /**
+     *Method to get all institutions
+     * @return all institutions as an object
+     */
     @RequestMapping(value="/fi/all")
     public @ResponseBody Object getInstitutions(){
         return neo.getInstitutions();
     }
     
+    /**
+     * Method to get specific institution using their short name
+     * @param shortName given to get specific institutions using their short name
+     * @return specific institution as an object
+     */
     @RequestMapping(value="/fi/get", method=RequestMethod.POST, consumes="application/json")
     public @ResponseBody Object fetchInstitution(String shortName){
         return neo.getInstitutionByShortName(shortName);
     }
     
+    /**
+     * Method to create new institution
+     * @param institution details given to create an institution
+     * @return boolean for the classified status of the action
+     */
     @RequestMapping(value="/fi/create", method=RequestMethod.POST, consumes="application/json")
     public @ResponseBody boolean createInstitution(Institution institution){
         return neo.addFinancialInstitution(institution);
     } 
     
+    /**
+     * Method to  get accounts specific to an institution
+     * @param shortName given to get accounts of an institution
+     * @return institution accounts as an object
+     */
     @RequestMapping(value="/fi/accounts", method=RequestMethod.POST, consumes="application/json")
     public @ResponseBody Object getInstitutionAccounts(String shortName){
         return neo.getAccountsForInstitution(shortName);

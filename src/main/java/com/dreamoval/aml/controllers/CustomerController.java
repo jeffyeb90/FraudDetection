@@ -32,21 +32,39 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class CustomerController {
 
-    //@Autowired
+    @Autowired
    private NeoRestClient neo;
 
+    /**
+     *
+     * @return
+     */
     @RequestMapping(value = "/customer/all")
     public @ResponseBody
     Object getCustomers() {
         return neo.getCustomers();
     }
 
+    /**
+     *
+     * @param customerId
+     * @return
+     */
     @RequestMapping(value = "/customer/get", method = RequestMethod.POST)
     public @ResponseBody
     Object fetchCustomer(@RequestParam(value="customerId") String customerId) {
         return neo.getCustomerById(customerId);
     }
 
+    /**
+     *Method to create a new customer given its relationship with account and financial institutions
+     * @param customer given as a String to represent details of customer
+     * @param account given as a String to represent account details for new customer
+     * @param fi  given as a String to represent financial institution for new customer
+     * @param response given to set response type relative to the request
+     * @param request given to set request type
+     * @return JSON message to indicate status of the action
+     */
     @RequestMapping(value = "/customer/create", method = RequestMethod.GET)
     @ResponseBody
     public JSONResponse createCustomer(
@@ -67,12 +85,22 @@ public class CustomerController {
         return jSONResponse;
     }
 
+    /**
+     * Method to get accounts specific to a customer ID
+     * @param customerId given to get the account details for a specific customer
+     * @return specific accounts for customers
+     */
     @RequestMapping(value = "/customer/accounts", method = RequestMethod.POST, consumes = "application/json")
     public @ResponseBody
     Object getCustomerAccounts(String customerId) {
         return neo.getAccountsForCustomer(customerId);
     }
 
+    /**
+     *Method to get specific customer transactions
+     * @param customerId given to return transactions specific to a customer
+     * @return customer transactions
+     */
     @RequestMapping(value = "/customer/transactions", method = RequestMethod.POST, consumes = "application/json")
     public @ResponseBody
     Object getCustomerTransactions(Long customerId) {
