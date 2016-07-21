@@ -60,7 +60,6 @@ public class Account {
     }
 /**this method sets the balance on the account 
  *@param balance is passed to set balance on account
-@return nothing
 */
     public void setBalance(Double balance) {
         this.balance = balance;
@@ -76,8 +75,7 @@ public class Account {
     }
 
 /**this method sets the account status
- *@param status is passed to set the account status 
-@return the account status
+ *@param status is passed to set the account status
 */  
     public void setStatus(String status) {
         this.status = status;
@@ -90,21 +88,24 @@ public class Account {
         return customer;
     }
 
-/*
- * @param customer the customer to set
- */
+
+    /**
+     * Method to set a customer
+     * @param customer given to set a customer
+     */
+    
     public void setCustomer(Customer customer) {
         this.customer = customer;
     }
 
-/**
+/**Method to get an institution
 * @return the institution
 */
     public Institution getInstitution() {
         return institution;
     }
 
-/**
+/**Method to set an institution
  * @param institution the institution to set
  */
     public void setInstitution(Institution institution) {
@@ -119,7 +120,6 @@ public class Account {
     }
 /**this method sets the account number of a user
 @param accountNumber is passed to set the account number
-*@return nothing
 */
     public void setAccountNumber(String accountNumber) {
         this.accountNumber = accountNumber;
@@ -133,7 +133,6 @@ public class Account {
 
 /**this method sets the opening date of account
  *@param dateOpened passes the date on which the account was opened
-@return the account balance
 */
     public void setDateOpened(Date dateOpened) {
         this.dateOpened = dateOpened;
@@ -146,8 +145,7 @@ public class Account {
         return accountType;
     }
 /**this method sets the account type
- *@param accountType is passed to set the account type 
-@return nothing
+ *@param accountType is passed to set the account type
 */ 
     public void setAccountType(String accountType) {
         this.accountType = accountType;

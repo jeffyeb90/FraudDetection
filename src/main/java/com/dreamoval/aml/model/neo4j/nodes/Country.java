@@ -31,50 +31,50 @@ public class Country {
     private @Fetch
     Set<Account> accounts;
 
-    /**
-     * @return the id
+    /**Method to get ID of a country
+     * @return the id of a country
      */
     public String getId() {
         return id;
     }
 
-    /**
-     * @return the name
+    /**Method to get name of a country
+     * @return the name of a country
      */
     public String getName() {
         return name;
     }
 
-    /**
-     * @param name the name to set
+    /**Method to set name of the country
+     * @param name given to set name of country
      */
     public void setName(String name) {
         this.name = name;
     }
 
-    /**
-     * @return the code
+    /**Method to get the code of a country
+     * @return the code of the country
      */
     public String getCode() {
         return code;
     }
 
-    /**
-     * @param code the code to set
+    /** Method to set code of country
+     * @param code given to set the code of country
      */
     public void setCode(String code) {
         this.code = code;
     }
 
-    /**
-     * @return the accounts
+    /**Method to return a set of accounts of country
+     * @return the accounts as a set
      */
     public Set<Account> getAccounts() {
         return accounts;
     }
 
-    /**
-     * @param accounts the accounts to set
+    /**Method to set accounts of country
+     * @param accounts given as a set of accounts to be set for country
      */
     public void setAccounts(Set<Account> accounts) {
         this.accounts = accounts;

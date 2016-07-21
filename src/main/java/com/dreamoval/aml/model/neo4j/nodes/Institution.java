@@ -35,50 +35,50 @@ public class Institution {
     Set<Account> accounts;
     
     
-     /**
+     /**Method to return institution ID
      * @return the institution id
      */ 
     public String getId(){
         return id;
     }
 
-    /**
-     * @return the name
+    /**Method to get the name of the institution
+     * @return the name of institution
      */
     public String getName() {
         return name;
     }
 
-    /**
-     * @param name the name to set
+    /**Method to set name of institution
+     * @param name given to set institution name
      */
     public void setName(String name) {
         this.name = name;
     }
 
-    /**
-     * @return the shortName
+    /**Method to get the short name of the institution
+     * @return the shortName of the institution
      */
     public String getShortName() {
         return shortName;
     }
 
-    /**
-     * @param shortName the shortName to set
+    /**Method to set short name of institution
+     * @param shortName given as the short name to be used
      */
     public void setShortName(String shortName) {
         this.shortName = shortName;
     }
 
-    /**
-     * @return the country
+    /**Method to get the country of the institution
+     * @return the country of the institution
      */
     public String getCountry() {
         return country;
     }
 
-    /**
-     * @param country the country to set
+    /**Method to set the country of the institution
+     * @param country given as the institution's country
      */
     public void setCountry(String country) {
         this.country = country;

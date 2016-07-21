@@ -32,53 +32,57 @@ public class Customer {
     Set<Account> accounts;
 
 
-     /**
+     /**Method to return customer ID
      * @return the customer id
      */ 
     public String getId() {
         return id;
     }
-    /**
+    /**Method to return customer name
      * @return the customer name
      */
     public String getName() {
         return name;
     }
  
-     /**
+     /**Method to set customer name
      * @param name the name to set
      */
     public void setName(String name) {
         this.name = name;
     }
 
-    /**
+    /**Method to check if customer details are verified
      * @return boolean if customer details are verified 
      */
     public boolean isKycVerified() {
         return kycVerified;
     }
 
-    /**
+    /**Method to set boolean for the customer's verification
      * @param kycVerified the boolean to confirm customer verification
      */
     public void setKycVerified(boolean kycVerified) {
         this.kycVerified = kycVerified;
     }
 
-     /**
+     /**Method to get risk score for customer
      * @return riskScore based on customer activities
      */
     public int getRiskScore() {
         return riskScore;
     }
-    /**
-     * @param riskScore the riskScore to set for customer based on activities
+    /**Method to set risk score for a customer
+     * @param riskScore the riskScore to set for customer, based on activities
      */
     public void setRiskScore(int riskScore) {
         this.riskScore = riskScore;
     }
-
+    
+    /**
+     * Method for string conversion
+     * @return results after string conversion
+     */
     @Override
     public String toString() {
         String results = name + "'s accounts are";

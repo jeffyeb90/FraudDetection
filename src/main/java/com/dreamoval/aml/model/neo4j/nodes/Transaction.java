@@ -43,134 +43,134 @@ public class Transaction {
     Account destinationAccount;
 
       
-    /**
-     * @return the id
+    /**Method to return ID of a transaction
+     * @return the transaction id
      */
     public String getId() {
         return id;
     }
 
-    /**
-     * @return the narrative
+    /**Method to return the narrative of a transaction
+     * @return the transaction's narrative
      */
     public String getNarrative() {
         return narrative;
     }
 
-    /**
-     * @param narrative the narrative to set
+    /**Method to set the narrative of a transaction
+     * @param narrative given as the narrative of the transaction
      */
     public void setNarrative(String narrative) {
         this.narrative = narrative;
     }
 
-    /**
-     * @return the type
+    /**Method to return the type of transaction
+     * @return the type of transaction
      */
     public String getType() {
         return type;
     }
 
-    /**
-     * @param type the type to set
+    /**Method to set the type of transaction
+     * @param type given as the type of transaction
      */
     public void setType(String type) {
         this.type = type;
     }
 
-    /**
-     * @return the sourceAccount
+    /**Method to get the source of the transaction
+     * @return the source of the transaction
      */
     public String getSource() {
         return source;
     }
 
-    /**
-     * @param sourceAccount the sourceAccount to set
+    /**Method to set the source of the transaction
+     * @param source given to set the source of transaction
      */
     public void setSource(String source) {
         this.source = source;
     }
 
-    /**
-     * @return the destinationAccount
+    /**Method to get the destination of the transaction
+     * @return the destination of the transaction
      */
     public String getDestination() {
         return destination;
     }
 
-    /**
-     * @param destinationAccount the destinationAccount to set
+    /**Method to set the destinationAccount of the transaction
+     * @param destination given to set the destination of the transaction
      */
     public void setDestinationAccount(String destination) {
         this.destination = destination;
     }
 
-    /**
-     * @return the flag
+    /**Method to get a flag on the transaction
+     * @return the flag 
      */
     public String getFlag() {
         return flag;
     }
 
-    /**
-     * @param flag the flag to set
+    /**Method to set the flag of the transaction
+     * @param flag given to set the transaction flag
      */
     public void setFlag(String flag) {
         this.flag = flag;
     }
 
-    /**
-     * @return the amount
+    /**Method to get the amount on the transaction
+     * @return the transaction amount
      */
     public Double getAmount() {
         return amount;
     }
 
-    /**
+    /**Method to set the transaction amount
      * @param amount the amount to set
      */
     public void setAmount(Double amount) {
         this.amount = amount;
     }
 
-    /**
+    /**Method to get the date of the transaction
      * @return the date
      */
     public Date getDate() {
         return date;
     }
 
-    /**
-     * @param date the date to set
+    /**Method to set the date of the transaction
+     * @param date given as the transaction date
      */
     public void setDate(Date date) {
         this.date = date;
     }
 
-    /**
-     * @return the sourceAccount
+    /**Method to get the source account of the transaction
+     * @return the sourceAccount of the transaction
      */
     public Account getSourceAccount() {
         return sourceAccount;
     }
 
-    /**
-     * @param sourceAccount the sourceAccount to set
+    /**Method to set the source account of the transaction
+     * @param sourceAccount given as the transaction's source account
      */
     public void setSourceAccount(Account sourceAccount) {
         this.sourceAccount = sourceAccount;
     }
 
-    /**
+    /**Method to return the destination account of the transaction
      * @return the destinationAccount
      */
     public Account getDestinationAccount() {
         return destinationAccount;
     }
 
-    /**
-     * @param destinationAccount the destinationAccount to set
+    /**Method to set the destination account of a transaction
+     * @param destinationAccount given as the transaction's destination account
      */
     public void setDestinationAccount(Account destinationAccount) {
         this.destinationAccount = destinationAccount;
