@@ -4,14 +4,14 @@ import com.dreamoval.aml.model.mongo.domain.Rule;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 /**
- * Created by dreamadmin on 10/11/14.
+ * Created by dreamadmin 
  */
 public interface RuleRepository extends MongoRepository<Rule, String> {
 
     /**
-     *
-     * @param id
-     * @return
+     *Abstract method to get the ID of ITransaction, implemented by Spring
+     * @param id given to get a specific rule
+     * @return rule
      */
     public Rule findById(String id);
 }

@@ -5,15 +5,15 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
 /**
- * Created by dreamadmin on 10/11/14.
+ * Created by dreamadmin 
  */
 @Repository("ITransactionRepository")
 public interface ITransactionRepository extends MongoRepository<ITransaction,Long> {
 
     /**
-     *
-     * @param id
-     * @return
+     *Abstract method to get the ID of ITransaction, implemented by Spring 
+     * @param id given to get a specific ITransaction
+     * @return ITransaction
      */
-    public ITransaction findById(Long id);
+    public ITransaction findById(String id);
 }
