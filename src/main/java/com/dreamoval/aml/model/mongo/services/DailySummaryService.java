@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * Created by dreamadmin on 7/24/14.
+ * Created by dreamadmin
  */
 @Service
 public class DailySummaryService {
@@ -25,17 +25,17 @@ public class DailySummaryService {
     private MongoTemplate mongoTemplate;
 
     /**
-     *
-     * @param dailySummary
-     * @return
+     * Method to save daily summary 
+     * @param dailySummary given as a daily summary to be saved
+     * @return results after a save
      */
     public DailySummary save(DailySummary dailySummary){
         return this.dailySummaryRepository.save(dailySummary);
     }
 
     /**
-     *
-     * @return
+     *Method to find a daily summary 
+     * @return a daily summary with details 
      */
     public DailySummary findDailySummary(){
         DateTime beginning = new DateTime();
@@ -51,8 +51,8 @@ public class DailySummaryService {
     }
 
     /**
-     *
-     * @return
+     *Method to find a list of monthly summaries
+     * @return a list of monthly summaries
      */
     public List<DailySummary> findMonthlySummary(){
         DateTime beginning = new DateTime().dayOfMonth().withMinimumValue().withTimeAtStartOfDay();
@@ -64,19 +64,20 @@ public class DailySummaryService {
     }
 
     /**
-     *
-     * @param dailySummary
+     *Method to delete a daily summary
+     * @param dailySummary given as a daily summary to be deleted
      */
     public void delete(DailySummary dailySummary){
         this.dailySummaryRepository.delete(dailySummary);
     }
 
-    /** depending on the time the application is started and ends, a query is executed to update flagged
+  /**depending on the time the application is started and ends, a query is executed to update flagged
   transactions using mongo operations
-  *if the transaction exists, update the date created with the new time
-  * if not insert a transaction and date created
-     * @param field
-     * @param count
+  * if the transaction exists, update the date created with the new time
+  * if not insert a transaction details and date created
+  * Method to update details of a transaction with respect to time
+     * @param field given to update the summary of specific transaction
+     * @param count given to represent the count of a specific type of transaction
   */
     public void updateSummary(String field, int count){
         DateTime beginning = new DateTime();

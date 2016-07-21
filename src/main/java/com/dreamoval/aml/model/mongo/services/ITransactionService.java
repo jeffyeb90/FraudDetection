@@ -17,34 +17,34 @@ public class ITransactionService {
     ITransactionRepository repository;
 
     /**
-     *
-     * @param transaction
-     * @return
+     *Method to save the ITransaction
+     * @param transaction given as the ITransaction to be saved
+     * @return results after save
      */
     public ITransaction save(ITransaction transaction){
         return this.repository.save(transaction);
     }
 
     /**
-     *
-     * @param transaction
+     * Method to delete the ITransaction
+     * @param transaction given as the ITransaction to be deleted
      */
     public void delete(ITransaction transaction){
         this.repository.delete(transaction);
     }
 
     /**
-     *
-     * @param id
-     * @return
+     *Method to find a specific ITransaction using an ID
+     * @param id given to find a specific ITransaction
+     * @return results after search
      */
-    public ITransaction findById(Long id){
+    public ITransaction findById(String id){
         return this.repository.findById(id);
     }
 
     /**
-     *
-     * @return
+     *Method to find all ITransactions in a list
+     * @return a list of ITransactions
      */
     public List<ITransaction> findAll(){
         return this.repository.findAll();
