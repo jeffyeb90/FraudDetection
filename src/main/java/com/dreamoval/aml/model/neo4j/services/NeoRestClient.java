@@ -16,13 +16,18 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
 /**
- * Created by dreamadmin on 10/11/14.
+ * Created by dreamadmin 
  */
 @Component
 public class NeoRestClient {
 
     String baseUrl = "http://192.168.0.235:7474/db/data/";
 
+    /**
+     *Method to add customer record
+     * @param customer given to add customer record
+     * @return boolean after action
+     */
     public boolean addCustomer(Customer customer) {
         String url = baseUrl + "/node";
         try {
@@ -39,6 +44,10 @@ public class NeoRestClient {
         return true;
     }
 
+    /**
+     *Method to return all customers
+     * @return customers as type Object
+     */
     public Object getCustomers() {
         try {
             RestTemplate rest = new RestTemplate();
@@ -53,6 +62,11 @@ public class NeoRestClient {
         }
     }
 
+    /**
+     *Method to return customer using customer ID
+     * @param customerId given to get a specific customer
+     * @return specific customer as type Object
+     */
     public Object getCustomerById(String customerId) {
         try {
             RestTemplate rest = new RestTemplate();
@@ -68,6 +82,11 @@ public class NeoRestClient {
         }
     }
 
+    /**
+     * Method to get accounts of Customers
+     * @param customerId given to get customer accounts
+     * @return customer accounts as type Object
+     */
     public Object getAccountsForCustomer(String customerId) {
         String url = baseUrl + "/node";
         try {
@@ -88,6 +107,11 @@ public class NeoRestClient {
         }
     }
 
+    /**
+     *Method to get customer transactions
+     * @param customerId given to get specific transactions for customer
+     * @return customer transactions as type Object
+     */
     public Object getCustomerTransactions(Long customerId) {
         String url = baseUrl + "/node";
         try {
@@ -104,6 +128,12 @@ public class NeoRestClient {
         }
     }
 
+    /**
+     *Method to add new customer account
+     * @param customer given to create customer details for account
+     * @param account given to create account for customer
+     * @return boolean after adding
+     */
     public boolean addAccount(Customer customer, Account account) {
         String url = baseUrl + "/node";
         try {
@@ -120,6 +150,10 @@ public class NeoRestClient {
         return true;
     }
 
+    /**
+     *Method to get all accounts created
+     * @return all accounts
+     */
     public Object getAccounts() {
         String url = baseUrl + "/node";
         try {
@@ -136,6 +170,11 @@ public class NeoRestClient {
         }
     }
 
+    /**
+     * Method to get specific account using account number
+     * @param accountNumber given to get a specific account
+     * @return account 
+     */
     public Object getAccountByNumber(String accountNumber) {
         String url = baseUrl + "/node";
         try {
@@ -152,6 +191,11 @@ public class NeoRestClient {
         }
     }
 
+    /**
+     *Method to get account transactions
+     * @param accountNumber given to get account transactions
+     * @return account transactions
+     */
     public Object getAccountTransactions(String accountNumber) {
         String url = baseUrl + "/node";
         try {
@@ -168,6 +212,13 @@ public class NeoRestClient {
         }
     }
 
+    /**
+     *Method to add new account transaction
+     * @param transaction given as Transaction type to add new transaction
+     * @param sourceAccount given as the source account information for new transaction
+     * @param destinationAccount given as the destination account information for new transaction
+     * @return boolean after add
+     */
     public boolean addTransaction(Transaction transaction, String sourceAccount, String destinationAccount) {
         String url = baseUrl + "/node";
         try {
@@ -187,6 +238,10 @@ public class NeoRestClient {
         return true;
     }
 
+    /**
+     *Method to get all transactions
+     * @return all transactions
+     */
     public Object getTransactions() {
         String url = baseUrl + "/node";
         try {
@@ -203,6 +258,11 @@ public class NeoRestClient {
         }
     }
 
+    /**
+     *Method to get a specific transaction
+     * @param transactionId given as an ID to get a specific transaction
+     * @return specific transaction
+     */
     public Object getTransactionById(Long transactionId) {
         String url = baseUrl + "/node";
         try {
@@ -219,6 +279,11 @@ public class NeoRestClient {
         }
     }
 
+    /**
+     *Method to add new financial institution
+     * @param institution given as institution type to add a new financial institution
+     * @return boolean after add
+     */
     public boolean addFinancialInstitution(Institution institution) {
         String url = baseUrl + "/node";
         try {
@@ -235,6 +300,10 @@ public class NeoRestClient {
         return true;
     }
 
+    /**
+     *Method to get all institutions
+     * @return institutions
+     */
     public Object getInstitutions() {
         String url = baseUrl + "/node";
         try {
@@ -251,6 +320,11 @@ public class NeoRestClient {
         }
     }
 
+    /**
+     *Method get institution using its short name
+     * @param shortName given as information get institution
+     * @return institution
+     */
     public Object getInstitutionByShortName(String shortName) {
         String url = baseUrl + "/node";
         try {
@@ -267,6 +341,11 @@ public class NeoRestClient {
         }
     }
 
+    /**
+     *Method to get accounts of an institution using its short name
+     * @param shortName given as information to get institution accounts
+     * @return institution accounts
+     */
     public Object getAccountsForInstitution(String shortName) {
         String url = baseUrl + "/node";
         try {
@@ -283,6 +362,11 @@ public class NeoRestClient {
         }
     }
 
+    /**
+     *Method to add a new node
+     * @param map given as MultiValueMap type with all queries to be executed for a node
+     * @return String message
+     */
     public String addNode(MultiValueMap<String, String> map) {
         String url = baseUrl + "/node";
         try {
@@ -297,9 +381,14 @@ public class NeoRestClient {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-        return "";
+        return "Ok";
     }
 
+    /**
+     *Method to update transaction information with regards to customer and account details
+     * @param id given to update a specific transaction 
+     * @return String message
+     */
     public String updateNode(String id) {
         String url = baseUrl + "/cypher";
         try {
@@ -314,9 +403,14 @@ public class NeoRestClient {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-        return "";
+        return "ok";
     }
 
+    /**
+     *Method to run queries in a map
+     * @param map given as multiValue map to serve as a place holder for queries to be executed
+     * @return response
+     */
     public Response runQuery(MultiValueMap<String, String> map) {
         String url = baseUrl + "/cypher";
         try {
@@ -329,6 +423,11 @@ public class NeoRestClient {
         return null;
     }
 
+    /**
+     *Method to get information from a response
+     * @param result given as a response type to get information
+     * @return data as an object type
+     */
     public Object responseToObject(Response result) {
         ArrayList list = (ArrayList) result.getData();
         ArrayList records = (ArrayList) list.get(0);
@@ -337,6 +436,11 @@ public class NeoRestClient {
         return node.get("data");
     }
 
+    /**
+     *Method to get information from a collection of responses
+     * @param result given as a response type to get information
+     * @return information from the collection
+     */
     public Object responseToCollection(Response result) {
         ArrayList list = (ArrayList) result.getData();
 
@@ -352,6 +456,11 @@ public class NeoRestClient {
         return coll;
     }
 
+    /**
+     *Method to make a call using the rest template
+     * @param rest given as a restTemplate
+     * @return String message
+     */
     public String call(RestTemplate rest) {
 
         return "";
