@@ -18,16 +18,25 @@ import java.util.List;
 @Service
 public class DailySummaryService {
 
-    //@Autowired
+    @Autowired
     private DailySummaryRepository dailySummaryRepository;
 
-    //@Autowired
+    @Autowired
     private MongoTemplate mongoTemplate;
 
+    /**
+     *
+     * @param dailySummary
+     * @return
+     */
     public DailySummary save(DailySummary dailySummary){
         return this.dailySummaryRepository.save(dailySummary);
     }
 
+    /**
+     *
+     * @return
+     */
     public DailySummary findDailySummary(){
         DateTime beginning = new DateTime();
         beginning = beginning.withTimeAtStartOfDay();
@@ -41,6 +50,10 @@ public class DailySummaryService {
         return mongoTemplate.findOne(query,DailySummary.class);
     }
 
+    /**
+     *
+     * @return
+     */
     public List<DailySummary> findMonthlySummary(){
         DateTime beginning = new DateTime().dayOfMonth().withMinimumValue().withTimeAtStartOfDay();
         DateTime end = new DateTime().dayOfMonth().withMaximumValue().withTime(23, 59, 59, 999);
@@ -50,6 +63,10 @@ public class DailySummaryService {
         return mongoTemplate.find(query,DailySummary.class);
     }
 
+    /**
+     *
+     * @param dailySummary
+     */
     public void delete(DailySummary dailySummary){
         this.dailySummaryRepository.delete(dailySummary);
     }
@@ -58,6 +75,8 @@ public class DailySummaryService {
   transactions using mongo operations
   *if the transaction exists, update the date created with the new time
   * if not insert a transaction and date created
+     * @param field
+     * @param count
   */
     public void updateSummary(String field, int count){
         DateTime beginning = new DateTime();

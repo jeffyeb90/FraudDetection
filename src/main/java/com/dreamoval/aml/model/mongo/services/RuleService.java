@@ -14,21 +14,39 @@ import org.springframework.stereotype.Service;
 @Service
 public class RuleService {
 
-    //@Autowired
+    @Autowired
     RuleRepository queryRepository;
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     public Rule find(String id) {
         return queryRepository.findById(id);
     }
 
+    /**
+     *
+     * @return
+     */
     public List<Rule> findAll() {
         return queryRepository.findAll();
     }
 
+    /**
+     *
+     * @param rule
+     * @return
+     */
     public Rule save(Rule rule) {
         return queryRepository.save(rule);
     }
 
+    /**
+     *
+     * @param rule
+     */
     public void delete(Rule rule) {
         queryRepository.delete(rule);
     }

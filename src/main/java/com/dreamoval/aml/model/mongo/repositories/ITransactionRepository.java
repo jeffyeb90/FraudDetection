@@ -10,5 +10,10 @@ import org.springframework.stereotype.Repository;
 @Repository("ITransactionRepository")
 public interface ITransactionRepository extends MongoRepository<ITransaction,Long> {
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     public ITransaction findById(Long id);
 }

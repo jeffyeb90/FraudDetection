@@ -8,5 +8,10 @@ import org.springframework.data.mongodb.repository.MongoRepository;
  */
 public interface RuleRepository extends MongoRepository<Rule, String> {
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     public Rule findById(String id);
 }

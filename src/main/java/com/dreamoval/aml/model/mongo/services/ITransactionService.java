@@ -13,19 +13,39 @@ import org.springframework.stereotype.Service;
 @Service
 public class ITransactionService {
 
-    //@Autowired
+    @Autowired
     ITransactionRepository repository;
 
+    /**
+     *
+     * @param transaction
+     * @return
+     */
     public ITransaction save(ITransaction transaction){
         return this.repository.save(transaction);
     }
+
+    /**
+     *
+     * @param transaction
+     */
     public void delete(ITransaction transaction){
         this.repository.delete(transaction);
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     public ITransaction findById(Long id){
         return this.repository.findById(id);
     }
+
+    /**
+     *
+     * @return
+     */
     public List<ITransaction> findAll(){
         return this.repository.findAll();
     }
