@@ -1,5 +1,6 @@
 package com.dreamoval.aml.services;
 
+import com.dreamoval.aml.model.neo4j.services.NeoRestClient;
 import com.dreamoval.aml.model.Response;
 import com.dreamoval.aml.model.neo4j.nodes.Transaction;
 import com.dreamoval.aml.model.mongo.domain.DailySummary;
@@ -8,7 +9,6 @@ import com.dreamoval.aml.model.mongo.domain.Rule;
 import com.dreamoval.aml.model.mongo.services.DailySummaryService;
 import com.dreamoval.aml.model.mongo.services.ITransactionService;
 import com.dreamoval.aml.model.mongo.services.RuleService;
-import com.dreamoval.aml.model.neo4j.services.NeoRestClient;
 import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -23,24 +23,31 @@ import java.util.List;
 @Component
 public class MonitoringService {
 
-   // @Autowired
+  @Autowired
     NeoRestClient rest;
 
-   // @Autowired
+    @Autowired
     RuleService ruleService;
 
-    //@Autowired
+    @Autowired
     ITransactionService transactionService;
 
-    //@Autowired
+    @Autowired
     DailySummaryService dailySummary;
     
-    //@Autowired
-    RuleClient ruleclient;
+    @Autowired
+    RuleService ruleclient;
     //run query
-    public String runQueries(Transaction transaction){
+
+    /**
+     *Method to check transactions against a list of rules
+     * @param transaction given as the specific transaction to be checked
+     * @return String message
+     */
+        public String runQueries(Transaction transaction){
         
-        /**takes a transaction, set the details and save
+        /**if add transaction equals true pass it to run queries in the neo rest client
+         * takes a transaction, set the details and save
          *find  the rule
          *for each of the rules,update the transaction as flagged ,replace 'key' objects(customer and account)
          * with string rep ,  get the rule query and add to map
@@ -64,8 +71,8 @@ public class MonitoringService {
 
         transactionService.save(tx);
         
-       
-        List<Rule> rules = ruleclient.useRules();
+       List<Rule> rules = ruleService.findAll();
+       // List<Rule> rules = ruleclient.useRules();
 
         //for each query
         for(Rule rule:rules){  
@@ -112,7 +119,12 @@ public class MonitoringService {
 
         return "done";
     }
-/** changed  string declaration to object , value of ,gives string rep */
+   /** 
+     * Method to replace specific parameters in the query using customer and account ID
+     * @param query given as the query to be replaced
+     * @param customer given as customer information for replacement
+     * @param accountId given as account information for replacement
+     * @return  */
     public String parseQuery(String query,String customer, String accountId){
         query = query.replaceAll("<cust_id >",customer);
         query = query.replaceAll("<account_no>",accountId);
