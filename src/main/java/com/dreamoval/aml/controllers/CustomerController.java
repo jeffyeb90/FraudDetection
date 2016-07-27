@@ -14,30 +14,27 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-/**
- * @RequestMapping(value="/customer/get", method=RequestMethod.POST,
- * consumes="application/json") public
- * @ResponseBody Customer fetchCustomer(Long customerId){ return
- * neo.getCustomerById(customerId); }
- *
+
+ /**
  *
  * @author dreamadmin
  */
-@RestController
+@Controller
 public class CustomerController {
 
     @Autowired
-   private NeoRestClient neo;
+    NeoRestClient neo;
 
     /**
-     *
-     * @return
+     *Method to get all the customers 
+     * @return customer objects
      */
     @RequestMapping(value = "/customer/all")
     public @ResponseBody
@@ -46,13 +43,13 @@ public class CustomerController {
     }
 
     /**
-     *
-     * @param customerId
-     * @return
+     * method to get a specific customer using its ID
+     * @param customerId given to get a specific customer
+     * @return specific customer
      */
     @RequestMapping(value = "/customer/get", method = RequestMethod.POST)
     public @ResponseBody
-    Object fetchCustomer(@RequestParam(value="customerId") String customerId) {
+    Object fetchCustomer(@RequestBody  String customerId) {
         return neo.getCustomerById(customerId);
     }
 
@@ -65,12 +62,12 @@ public class CustomerController {
      * @param request given to set request type
      * @return JSON message to indicate status of the action
      */
-    @RequestMapping(value = "/customer/create", method = RequestMethod.GET)
+    @RequestMapping(value = "/customer/create", method = RequestMethod.POST)
     @ResponseBody
     public JSONResponse createCustomer(
-            @RequestParam("customer") String customer,
-            @RequestParam("account") String account,
-            @RequestParam("fi") String fi,
+            @RequestBody String customer,
+            @RequestBody String account,
+            @RequestBody String fi,
             HttpServletResponse response, HttpServletRequest request) {
         response.setContentType("application/json;charset=UTF-8");
         JSONResponse jSONResponse = new JSONResponse();
@@ -90,9 +87,9 @@ public class CustomerController {
      * @param customerId given to get the account details for a specific customer
      * @return specific accounts for customers
      */
-    @RequestMapping(value = "/customer/accounts", method = RequestMethod.POST, consumes = "application/json")
+    @RequestMapping(value = "/customer/accounts", method = RequestMethod.POST ,consumes = "application/json")
     public @ResponseBody
-    Object getCustomerAccounts(String customerId) {
+    Object getCustomerAccounts(@RequestBody String customerId) {
         return neo.getAccountsForCustomer(customerId);
     }
 
@@ -103,7 +100,7 @@ public class CustomerController {
      */
     @RequestMapping(value = "/customer/transactions", method = RequestMethod.POST, consumes = "application/json")
     public @ResponseBody
-    Object getCustomerTransactions(Long customerId) {
+    Object getCustomerTransactions(@RequestBody Long customerId) {
         return neo.getCustomerTransactions(customerId);
     }
 }

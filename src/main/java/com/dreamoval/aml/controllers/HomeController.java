@@ -15,27 +15,30 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
  * Created by dreamadmin on 10/10/14.
  */
-@RestController
+
+@Controller
 public class HomeController {
 
-    @Autowired
-  private  ITransactionService transactionService;
+  
+   @Autowired
 
-    @Autowired
-   private DailySummaryService dailySummaryService;
+   DailySummaryService dailySummaryService;
 
     /**
      *Method to get monthly statistics in relation to daily transactions
      * @param model given to represent structure that holds statistics
      * @return string 
      */
-    @RequestMapping("/")
-    public String index(Model model) {
+    @RequestMapping(value="/stat")
+    public @ResponseBody String index(Model model) {
 //        List<ITransaction> transactions = transactionService.findAll();
         MonthlyChart monthlyChart = getMonthStats(dailySummaryService.findMonthlySummary());
         model.addAttribute("monthStats",monthlyChart);

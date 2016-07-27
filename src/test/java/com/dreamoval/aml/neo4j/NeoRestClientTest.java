@@ -1,4 +1,4 @@
-/**package com.dreamoval.aml.neo4j;
+package com.dreamoval.aml.neo4j;
 
 import com.dreamoval.aml.model.neo4j.services.NeoRestClient;
 import com.dreamoval.aml.Application;
@@ -23,14 +23,17 @@ public class NeoRestClientTest {
     @Test
     public void testAddNode() throws Exception {
 //        rest.addNode("{\"name\":\"Stephen\"}");
+        System.out.println("test1");
         MultiValueMap<String,String> map = new LinkedMultiValueMap<String, String>();
+         System.out.println("test2");
         map.add("query","MATCH (n:`Account`)<-[:Owns]-(c:Customer {id:'005'}) RETURN n LIMIT 25");
-        Gson gson = new Gson();
+         System.out.println("test3");
+        //Gson gson = new Gson();
         Response result = rest.runQuery(map);
-
+    System.out.println("test4");
         System.out.println(result.getData());
+        System.out.println("test5");
 //        Response response = gson.fromJson(result,Response.class);
 
     }
 }
-*/

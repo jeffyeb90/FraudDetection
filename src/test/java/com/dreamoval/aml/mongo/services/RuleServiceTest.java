@@ -1,4 +1,4 @@
-/**package com.dreamoval.aml.mongo.services;
+package com.dreamoval.aml.mongo.services;
 
 import com.dreamoval.aml.Application;
 import com.dreamoval.aml.model.mongo.domain.Rule;
@@ -20,9 +20,10 @@ public class RuleServiceTest {
 
     @Test
     public void testSave() throws Exception {
-//        Rule rule = new Rule();
-//        rule.setId("1");
-//        rule.setQuery("match (c:Customer)-[:Owns]->(a:Account {number: <account_no>}) where c.riskScore > <threshold> return c.id;");
-//        ruleService.save(rule);
+       Rule rule = new Rule();
+     rule.setId("1");
+      rule.setQuery("match (c:Customer)-[:Owns]->(a:Account {number: <account_no>}) where a.balance > 5000 return c.id");
+        ruleService.save(rule);
+        System.out.println("Yo");
     }
-}*/
+}

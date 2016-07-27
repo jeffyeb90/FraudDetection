@@ -14,7 +14,9 @@ import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -25,14 +27,14 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author malike_st
  */
-@RestController
+@Controller
 public class TransactionController {
 
     @Autowired
-    private NeoRestClient neo;
+     NeoRestClient neo;
 
     @Autowired
-    private MonitoringService service;
+     MonitoringService service;
 /**
  *  Method to create a transaction by sending a request using transactions and account details
  * @param transaction given to represent transaction details needed to create a transaction
@@ -64,9 +66,8 @@ public class TransactionController {
  * Method to get all transactions
  * @return all transactions as an object
  */
-    @RequestMapping(value = "/transaction/all", method = RequestMethod.POST, consumes = "application/json")
-    public @ResponseBody
-    Object getTransactions() {
+    @RequestMapping(value = "/transaction/all")
+    public @ResponseBody Object getTransactions() {
         return neo.getTransactions();
     }
 
@@ -76,8 +77,7 @@ public class TransactionController {
      * @return a specific transaction
      */
     @RequestMapping(value = "/transaction/get", method = RequestMethod.POST, consumes = "application/json")
-    public @ResponseBody
-    Object fetchTransaction(Long transactionId) {
+    public @ResponseBody Object fetchTransaction(Long transactionId) {
         return neo.getTransactionById(transactionId);
     }
 
@@ -86,10 +86,15 @@ public class TransactionController {
      * @param transaction given to represent transaction details needed to create new transactions
      * @return boolean to indicate status of  action
      */
-    @RequestMapping(value = "/transaction/create", method = RequestMethod.GET, consumes = "application/json")
-    public @ResponseBody
-    boolean createTransaction(@RequestParam("transaction") String transaction) {
+    
+    @RequestMapping(value = "/transaction/create", method = RequestMethod.POST, consumes = "application/json")
+    public @ResponseBody boolean createTransaction(@RequestBody String transaction) {
         Transaction t = new Gson().fromJson(transaction, Transaction.class);
         return neo.addTransaction(t, t.getSource(), t.getDestination());
     }
+//    @RequestMapping(value = "/transaction/create", method = RequestMethod.GET, consumes = "application/json")
+//    public @ResponseBody boolean createTransaction(@RequestParam("transaction") String transaction) {
+//        Transaction t = new Gson().fromJson(transaction, Transaction.class);
+//        return neo.addTransaction(t, t.getSource(), t.getDestination());
+//    }
 }

@@ -17,7 +17,15 @@
     </parent>
   <packaging>war</packaging>
 
-    
+     <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            
+        </plugins>
+    </build>
 
     <dependencies>
         
@@ -37,7 +45,10 @@
             <artifactId>spring-boot-starter</artifactId>
             <scope>provided</scope>
         </dependency>
-
+<dependency>
+  <groupId>org.springframework.boot</groupId>
+  <artifactId>spring-boot-starter-thymeleaf</artifactId>
+</dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -153,12 +164,8 @@
           
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>log4j-over-slf4j</artifactId>
-            
-            <scope>test</scope>
-        </dependency>
+      
+   
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -177,18 +184,8 @@
          
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.hamcrest</groupId>
-            <artifactId>hamcrest-library</artifactId>
-           
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>jcl-over-slf4j</artifactId>
-          
-            <scope>runtime</scope>
-        </dependency>
+        
+        
         <dependency>
             <groupId>org.eclipse.birt.runtime</groupId>
             <artifactId>org.apache.commons.logging</artifactId>
@@ -205,6 +202,16 @@
             <artifactId>spring-aop</artifactId>
             
         </dependency>
+ <dependency>
+    <groupId>org.slf4j</groupId>
+    <artifactId>slf4j-api</artifactId>
+    <version>1.7.21</version>
+</dependency>
+<dependency>
+    <groupId>org.slf4j</groupId>
+    <artifactId>slf4j-simple</artifactId>
+    <version>1.7.21</version>
+</dependency>
 
         <dependency>
             <groupId>org.springframework</groupId>
@@ -326,22 +333,6 @@
        
     </dependencies>
 
-    <properties>
-        <start-class>com.dreamoval.aml.Application</start-class>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
-    </properties>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-            
-        </plugins>
-    </build>
+ 
 
 </project>

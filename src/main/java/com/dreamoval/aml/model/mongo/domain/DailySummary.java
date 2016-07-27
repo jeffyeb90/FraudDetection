@@ -5,10 +5,13 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import java.util.UUID;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
  * Created by dreamadmin 
  */
+
+@Document(collection="daily_summary")
 public class DailySummary {
 
 
@@ -86,7 +89,7 @@ public class DailySummary {
 
     /**
      * Method to get an instance of the dateTime a dailySummary was last modified
-     * @return
+     * @return date for last modified summary
      */
     public DateTime getLastModified() {
         return lastModified;

@@ -1,0 +1,3 @@
+com/dreamoval/aml/services/MonitoringServiceTest.class
+com/dreamoval/aml/neo4j/NeoRestClientTest.class
+com/dreamoval/aml/mongo/services/RuleServiceTest.class

@@ -16,11 +16,13 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 
 import java.util.List;
+import org.springframework.stereotype.Service;
+
 /**pass transactions and based on rules find details of customers*/
 /**
  * Created by dreamadmin on 10/11/14.
  */
-@Component
+@Service
 public class MonitoringService {
 
   @Autowired
@@ -87,7 +89,7 @@ public class MonitoringService {
             if(result.getData().size()>0){
                   dailySummary.updateSummary("flaggedTransactions",1);
                 //get query for for updating customer
-                rest.updateNode(String.valueOf(transaction.getSourceAccount().getId()));
+                rest.updateNode(transaction.getSourceAccount().getId());
                 //run query
 
                 //send notification
@@ -98,15 +100,16 @@ public class MonitoringService {
             map.clear();
             map.add("query",parseQuery(rule.getQuery(),transaction.getSourceAccount().getCustomer().getId(),
                     transaction.getDestinationAccount().getId()));
+            System.out.println("1");
             result = rest.runQuery(map);
-
+System.out.println("2");
             if(result.getData().size()>0){
                 dailySummary.updateSummary("flaggedTransactions",1);
-
+ System.out.println("3");
                 //get query for for updating customer
-                rest.updateNode(String.valueOf(transaction.getDestinationAccount().getId()));
+                rest.updateNode(transaction.getDestinationAccount().getId());
                 //run query
-
+System.out.println("4");
                 //send notification
             }
 
@@ -124,7 +127,7 @@ public class MonitoringService {
      * @param query given as the query to be replaced
      * @param customer given as customer information for replacement
      * @param accountId given as account information for replacement
-     * @return  */
+     * @return  new query */
     public String parseQuery(String query,String customer, String accountId){
         query = query.replaceAll("<cust_id >",customer);
         query = query.replaceAll("<account_no>",accountId);

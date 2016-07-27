@@ -20,9 +20,9 @@ import org.springframework.web.client.RestTemplate;
  */
 @Component
 public class NeoRestClient {
+    
 
-    String baseUrl = "http://192.168.0.235:7474/db/data/";
-
+    String baseUrl = "http://localhost:7474/db/data";
     /**
      *Method to add customer record
      * @param customer given to add customer record
@@ -33,7 +33,7 @@ public class NeoRestClient {
         try {
             RestTemplate rest = new RestTemplate();
             MultiValueMap<String, String> map = new LinkedMultiValueMap<String, String>();
-            String query = String.format("CREATE UNIQUE (:Customer {name: '%s', kycVerified: %s, riskScore: %d})", customer.getName(), customer.isKycVerified(), customer.getRiskScore());
+            String query = String.format("CREATE  (:Customer {cid: '%s',name: '%s', kycVerified: %s, riskScore: %d})",customer.getId(), customer.getName(), customer.isKycVerified(), customer.getRiskScore());
             map.add("query", query);
 
             rest.postForEntity(url, map, Customer.class);
@@ -139,7 +139,8 @@ public class NeoRestClient {
         try {
             RestTemplate rest = new RestTemplate();
             MultiValueMap<String, String> map = new LinkedMultiValueMap<String, String>();
-            String query = String.format("MATCH (c:Customer {id: %d}) CREATE UNIQUE (c)-[:Owns]->(:Account {accountNumber: '%s', balance: 0, dateOpened: %d, status: 'ACTIVE'})", customer.getId(), account.getAccountNumber(), account.getDateOpened().getTime());
+            String query;
+            query = String.format("MATCH (c:Customer {cid: '%s'}) CREATE UNIQUE (c)-[:Owns]->(:Account {accountNumber: '%s',accountType:'%s', balance: 0, dateOpened: %d, status: 'ACTIVE'})", customer.getId(), account.getAccountNumber(), account.getDateOpened().getTime());
             map.add("query", query);
 
             rest.postForEntity(url, map, Account.class);
@@ -224,7 +225,7 @@ public class NeoRestClient {
         try {
             RestTemplate rest = new RestTemplate();
             MultiValueMap<String, String> map = new LinkedMultiValueMap<String, String>();
-            String query = String.format("MATCH (a:Account {accountNumber: '%s'}) CREATE UNIQUE (a)-[:Has]->(:Transaction {narrative: '%s', type: '%s', source: '%s', destination: '%s', flag: '%s', amount: '%f', date: '%d'})", transaction.getSource(), transaction.getNarrative(), sourceAccount, destinationAccount, transaction.getFlag(), transaction.getAmount(), transaction.getDate().getTime());
+            String query = String.format("MATCH (a:Account {accountNumber: '%s'}) CREATE UNIQUE (a)-[:Has]->(:Transaction {narrative: '%s', type: '%s', source: '%s', destination: '%s', flag: '%s', amount: '%f', date: '%d'})",  transaction.getNarrative(), sourceAccount, destinationAccount, transaction.getFlag(), transaction.getAmount(), transaction.getDate().getTime());
             map.add("query", query);
             rest.postForEntity(url, map, Transaction.class);
 
@@ -289,7 +290,7 @@ public class NeoRestClient {
         try {
             RestTemplate rest = new RestTemplate();
             MultiValueMap<String, String> map = new LinkedMultiValueMap<String, String>();
-            String query = String.format("CREATE UNIQUE (:FI {name: '%s', shortName: '%s', country: '%s'})", institution.getName(), institution.getShortName(), institution.getCountry());
+            String query = String.format("CREATE  (:Institution {name: '%s', shortName: '%s', country: '%s'})", institution.getName(), institution.getShortName(), institution.getCountry());
             map.add("query", query);
 
             rest.postForEntity(url, map, Customer.class);
@@ -348,18 +349,15 @@ public class NeoRestClient {
      */
     public Object getAccountsForInstitution(String shortName) {
         String url = baseUrl + "/node";
-        try {
+      
             RestTemplate rest = new RestTemplate();
             MultiValueMap<String, String> map = new LinkedMultiValueMap<String, String>();
             String query = String.format("MATCH (i:FI {shortName: '%s'})-[:Holds]->(a:Account) return a", shortName);
             map.add("query", query);
-
             Response result = runQuery(map);
+            
             return responseToCollection(result);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            return null;
-        }
+        
     }
 
     /**
@@ -413,14 +411,13 @@ public class NeoRestClient {
      */
     public Response runQuery(MultiValueMap<String, String> map) {
         String url = baseUrl + "/cypher";
-        try {
+       System.out.println("runquery1");
             RestTemplate rest = new RestTemplate();
             ResponseEntity<Response> result = rest.postForEntity(url, map, Response.class);
             return result.getBody();
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-        return null;
+       
+       
+        
     }
 
     /**

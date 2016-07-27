@@ -1,3 +1,4 @@
+/Users/JeffreyTakyi-Yeboah/NetBeansProjects/FraudDetection/src/main/java/com/dreamoval/aml/config/Neo4jSessionFactory.java
 /Users/JeffreyTakyi-Yeboah/NetBeansProjects/FraudDetection/src/main/java/com/dreamoval/aml/util/JSONResponse.java
 /Users/JeffreyTakyi-Yeboah/NetBeansProjects/FraudDetection/src/main/java/com/dreamoval/aml/controllers/TransactionController.java
 /Users/JeffreyTakyi-Yeboah/NetBeansProjects/FraudDetection/src/main/java/com/dreamoval/aml/config/MongoConfiguration.java
@@ -11,9 +12,7 @@
 /Users/JeffreyTakyi-Yeboah/NetBeansProjects/FraudDetection/src/main/java/com/dreamoval/aml/controllers/InstitutionController.java
 /Users/JeffreyTakyi-Yeboah/NetBeansProjects/FraudDetection/src/main/java/com/dreamoval/aml/util/MonthlyChart.java
 /Users/JeffreyTakyi-Yeboah/NetBeansProjects/FraudDetection/src/main/java/com/dreamoval/aml/controllers/HomeController.java
-/Users/JeffreyTakyi-Yeboah/NetBeansProjects/FraudDetection/src/main/java/com/dreamoval/aml/model/neo4j/repositories/CustomerRepository.java
 /Users/JeffreyTakyi-Yeboah/NetBeansProjects/FraudDetection/src/main/java/com/dreamoval/aml/util/CORSFilter.java
-/Users/JeffreyTakyi-Yeboah/NetBeansProjects/FraudDetection/src/main/java/com/dreamoval/aml/config/NeoConfig.java
 /Users/JeffreyTakyi-Yeboah/NetBeansProjects/FraudDetection/src/main/java/com/dreamoval/aml/controllers/CustomerController.java
 /Users/JeffreyTakyi-Yeboah/NetBeansProjects/FraudDetection/src/main/java/com/dreamoval/aml/model/mongo/repositories/DailySummaryRepository.java
 /Users/JeffreyTakyi-Yeboah/NetBeansProjects/FraudDetection/src/main/java/com/dreamoval/aml/model/neo4j/nodes/Transaction.java
@@ -21,9 +20,7 @@
 /Users/JeffreyTakyi-Yeboah/NetBeansProjects/FraudDetection/src/main/java/com/dreamoval/aml/model/mongo/domain/Rule.java
 /Users/JeffreyTakyi-Yeboah/NetBeansProjects/FraudDetection/src/main/java/com/dreamoval/aml/config/WebConfig.java
 /Users/JeffreyTakyi-Yeboah/NetBeansProjects/FraudDetection/src/main/java/com/dreamoval/aml/model/mongo/domain/DailySummary.java
-/Users/JeffreyTakyi-Yeboah/NetBeansProjects/FraudDetection/src/main/java/com/dreamoval/aml/services/RuleClient.java
 /Users/JeffreyTakyi-Yeboah/NetBeansProjects/FraudDetection/src/main/java/com/dreamoval/aml/model/mongo/repositories/RuleRepository.java
-/Users/JeffreyTakyi-Yeboah/NetBeansProjects/FraudDetection/src/main/java/com/dreamoval/aml/model/neo4j/services/CustomerService.java
 /Users/JeffreyTakyi-Yeboah/NetBeansProjects/FraudDetection/src/main/java/com/dreamoval/aml/model/neo4j/services/NeoRestClient.java
 /Users/JeffreyTakyi-Yeboah/NetBeansProjects/FraudDetection/src/main/java/com/dreamoval/aml/model/mongo/domain/ITransaction.java
 /Users/JeffreyTakyi-Yeboah/NetBeansProjects/FraudDetection/src/main/java/com/dreamoval/aml/model/mongo/repositories/ITransactionRepository.java

@@ -15,6 +15,7 @@
                 <netbeans.deploy>true</netbeans.deploy>
                 <jpda.listen>maven</jpda.listen>
                 <Env.JAVA_HOME>/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home</Env.JAVA_HOME>
+                <netbeans.deploy.clientUrlPart>http://localhost:8080</netbeans.deploy.clientUrlPart>
             </properties>
         </action>
     </actions>

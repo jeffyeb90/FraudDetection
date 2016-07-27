@@ -16,20 +16,16 @@ import org.springframework.beans.BeansException;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContextAware;
 
-/**
- * Created by dreamadmin on 10/10/14.
- */
 
-@SpringBootApplication
+@Configuration
+@EnableAutoConfiguration
+@ComponentScan
 public class Application {
-    
-//private final static org.slf4j.Logger log = LoggerFactory.getLogger(Application.class);
 
     /**
      * Main class to list all beans and display application status
-     * @param args
+     * @param args given as the predefined array of Strings
      */
-    
     public static void main(String[] args) {
         ApplicationContext ctx = SpringApplication.run(Application.class, args);
 
@@ -41,5 +37,7 @@ public class Application {
             System.out.println(beanName);
         }
     }
+    
+        
 }
 

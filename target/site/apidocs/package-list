@@ -1,0 +1,10 @@
+com.dreamoval.aml
+com.dreamoval.aml.controllers
+com.dreamoval.aml.model
+com.dreamoval.aml.model.mongo.domain
+com.dreamoval.aml.model.mongo.repositories
+com.dreamoval.aml.model.mongo.services
+com.dreamoval.aml.model.neo4j.nodes
+com.dreamoval.aml.model.neo4j.services
+com.dreamoval.aml.services
+com.dreamoval.aml.util

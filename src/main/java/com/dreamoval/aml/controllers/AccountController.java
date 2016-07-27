@@ -9,8 +9,11 @@ import com.dreamoval.aml.model.neo4j.nodes.Account;
 import com.dreamoval.aml.model.neo4j.services.NeoRestClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,17 +21,22 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author dreamadmin
  */
-@RestController
+@Controller
 public class AccountController {
     
    @Autowired
-  private  NeoRestClient neo;
+    NeoRestClient neo;
+   
+     @RequestMapping(value="/home")
+    public @ResponseBody String home(){
+        return "Welcome";
+    }
     
    /**
     * A method to get all accounts as a web request. 
     * @return all accounts as object using the neoRestClient
     */
-    @RequestMapping(value="/account/all")
+    @RequestMapping(value="/account/all", method=RequestMethod.GET, produces="application/json")
     public @ResponseBody Object getAccounts(){
         return neo.getAccounts();
     }
@@ -39,7 +47,7 @@ public class AccountController {
      * @return specific account details using account number
      */
     @RequestMapping(value="/account/get", method=RequestMethod.POST, consumes="application/json")
-    public @ResponseBody Object fetchAccount(String accountNumber){
+    public @ResponseBody Object fetchAccount(@RequestBody String accountNumber){
         return neo.getAccountByNumber(accountNumber);
     }
     
@@ -50,7 +58,7 @@ public class AccountController {
      * @return boolean for the classified result
      */
     @RequestMapping(value="/account/create", method=RequestMethod.POST, consumes="application/json")
-    public boolean createAccount(Account account, String customerNo){
+    public boolean createAccount(@RequestBody Account account, String customerNo){
         return neo.addAccount(account.getCustomer(), account);
     }
     
@@ -60,7 +68,7 @@ public class AccountController {
      * @return account transactions as an object 
      */
     @RequestMapping(value="/account/transactions", method=RequestMethod.POST, consumes="application/json")
-    public @ResponseBody Object getAccountTransactions(String accountNumber){
+    public @ResponseBody Object getAccountTransactions(@RequestBody String accountNumber){
         return neo.getAccountTransactions(accountNumber);
     }
     

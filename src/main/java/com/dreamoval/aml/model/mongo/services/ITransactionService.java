@@ -5,6 +5,7 @@ import com.dreamoval.aml.model.mongo.repositories.ITransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 /**

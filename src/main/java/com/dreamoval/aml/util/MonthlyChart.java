@@ -41,7 +41,7 @@ public class MonthlyChart {
 
     /**
      *Method to set statistics for a list of daily statistics
-     * @param stats
+     * @param stats given as the list of daily statistics
      */
     public void setStats(List<DailyStat> stats) {
         this.stats = stats;

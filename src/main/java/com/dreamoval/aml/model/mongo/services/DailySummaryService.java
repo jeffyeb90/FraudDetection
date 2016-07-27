@@ -1,5 +1,6 @@
 package com.dreamoval.aml.model.mongo.services;
 
+
 import com.dreamoval.aml.model.mongo.domain.DailySummary;
 import com.dreamoval.aml.model.mongo.repositories.DailySummaryRepository;
 import org.joda.time.DateTime;
@@ -11,18 +12,23 @@ import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import org.springframework.stereotype.Component;
 
 /**
  * Created by dreamadmin
  */
+
 @Service
 public class DailySummaryService {
 
+    
+   
     @Autowired
-    private DailySummaryRepository dailySummaryRepository;
+     DailySummaryRepository dailySummaryRepository;
 
     @Autowired
-    private MongoTemplate mongoTemplate;
+     MongoTemplate mongoTemplate;
+    
 
     /**
      * Method to save daily summary 

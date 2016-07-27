@@ -7,6 +7,8 @@ package com.dreamoval.aml.controllers;
 import com.dreamoval.aml.model.neo4j.nodes.Institution;
 import com.dreamoval.aml.model.neo4j.services.NeoRestClient;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -16,10 +18,11 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author dreamadmin
  */
-@RestController
+@Controller
 public class InstitutionController {
+    
     @Autowired
-  private  NeoRestClient neo;
+    NeoRestClient neo;
     
     /**
      *Method to get all institutions
@@ -36,7 +39,7 @@ public class InstitutionController {
      * @return specific institution as an object
      */
     @RequestMapping(value="/fi/get", method=RequestMethod.POST, consumes="application/json")
-    public @ResponseBody Object fetchInstitution(String shortName){
+    public @ResponseBody Object fetchInstitution(@RequestBody String shortName){
         return neo.getInstitutionByShortName(shortName);
     }
     
@@ -46,7 +49,7 @@ public class InstitutionController {
      * @return boolean for the classified status of the action
      */
     @RequestMapping(value="/fi/create", method=RequestMethod.POST, consumes="application/json")
-    public @ResponseBody boolean createInstitution(Institution institution){
+    public @ResponseBody boolean createInstitution(@RequestBody Institution institution){
         return neo.addFinancialInstitution(institution);
     } 
     
@@ -56,7 +59,7 @@ public class InstitutionController {
      * @return institution accounts as an object
      */
     @RequestMapping(value="/fi/accounts", method=RequestMethod.POST, consumes="application/json")
-    public @ResponseBody Object getInstitutionAccounts(String shortName){
+    public @ResponseBody Object getInstitutionAccounts(@RequestBody String shortName){
         return neo.getAccountsForInstitution(shortName);
     }
 }

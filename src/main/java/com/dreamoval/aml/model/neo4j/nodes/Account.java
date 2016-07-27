@@ -51,6 +51,9 @@ public class Account {
     public String getId() {
         return id;
     }
+     public void setId(String id) {
+        this.id =id;
+    }
 
 /**this method returns the balance on the account 
 @return the account balance

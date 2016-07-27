@@ -22,19 +22,19 @@ import org.springframework.stereotype.Component;
 public class CORSFilter implements Filter {
 
     /**
-     *
-     * @param filterConfig
+     * Method to initialize filter
+     * @param filterConfig given to initialize filter
      */
     public void init(FilterConfig filterConfig) {
     }
 
     /**
-     *
-     * @param req
-     * @param res
-     * @param chain
-     * @throws IOException
-     * @throws ServletException
+     * Method to check and use filters for request
+     * @param req given as the ServletRequest type
+     * @param res given as ServletResponse type
+     * @param chain given as FilterChain
+     * @throws IOException given as exception for input/output actions
+     * @throws ServletException given as exception for Servlet actions
      */
     public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {
         HttpServletResponse response = (HttpServletResponse) res;

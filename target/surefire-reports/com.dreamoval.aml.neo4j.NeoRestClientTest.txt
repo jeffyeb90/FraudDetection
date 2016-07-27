@@ -1,0 +1,14 @@
+-------------------------------------------------------------------------------
+Test set: com.dreamoval.aml.neo4j.NeoRestClientTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.3 sec <<< FAILURE! - in com.dreamoval.aml.neo4j.NeoRestClientTest
+testAddNode(com.dreamoval.aml.neo4j.NeoRestClientTest)  Time elapsed: 0.3 sec  <<< ERROR!
+org.springframework.web.client.HttpClientErrorException: 401 Unauthorized
+	at org.springframework.web.client.DefaultResponseErrorHandler.handleError(DefaultResponseErrorHandler.java:91)
+	at org.springframework.web.client.RestTemplate.handleResponse(RestTemplate.java:641)
+	at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:597)
+	at org.springframework.web.client.RestTemplate.execute(RestTemplate.java:557)
+	at org.springframework.web.client.RestTemplate.postForEntity(RestTemplate.java:384)
+	at com.dreamoval.aml.model.neo4j.services.NeoRestClient.runQuery(NeoRestClient.java:416)
+	at com.dreamoval.aml.neo4j.NeoRestClientTest.testAddNode(NeoRestClientTest.java:32)
+

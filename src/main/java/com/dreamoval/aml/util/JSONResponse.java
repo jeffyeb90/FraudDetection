@@ -16,7 +16,7 @@ public class JSONResponse {
     private int count;
 
     /**
-     *
+     * Default constructor
      */
     public JSONResponse() {
     }
@@ -39,7 +39,7 @@ public class JSONResponse {
 
     /**
      *Method to get message of a JSON response
-     * @return
+     * @return message as JSON response
      */
     public String getMessage() {
         return message;
