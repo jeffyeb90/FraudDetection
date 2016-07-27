@@ -92,9 +92,17 @@ public class TransactionController {
         Transaction t = new Gson().fromJson(transaction, Transaction.class);
         return neo.addTransaction(t, t.getSource(), t.getDestination());
     }
-//    @RequestMapping(value = "/transaction/create", method = RequestMethod.GET, consumes = "application/json")
-//    public @ResponseBody boolean createTransaction(@RequestParam("transaction") String transaction) {
-//        Transaction t = new Gson().fromJson(transaction, Transaction.class);
-//        return neo.addTransaction(t, t.getSource(), t.getDestination());
-//    }
+    
+ /**
+     *Method to monitor a  transaction given its source and destination in the details
+     * @param transaction given to represent transaction object which has all details necessary for transaction
+     * @return String to indicate status of action
+     */
+ @RequestMapping(value = "/transaction/monitor", method = RequestMethod.POST, consumes = "application/json")
+    public @ResponseBody String monitorTransaction(@RequestBody Transaction transaction) {
+        
+        return service.runQueries(transaction);
+    }
+
 }
+
